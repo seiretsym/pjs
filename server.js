@@ -1,6 +1,6 @@
 // dependencies
 var express = require("express");
-var cakehbs = require("express-handlebars");
+var hbs = require("express-handlebars");
 
 // hosting properties
 var PORT = process.env.PORT || 3377; // D E R P! :D
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // handlebar/views config
-app.engine("handlebars", cakehbs({ defaultLayout: "main" }));
+app.engine("handlebars", hbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // import cake routes
