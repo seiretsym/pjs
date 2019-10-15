@@ -5,7 +5,7 @@ module.exports = function (app) {
         res.render("index", { test: "test" })
     })
 
-    app.get("/api/user/:email", function (req, res) {
+    app.get("/api/user/", function (req, res) {
         db.users.find({
             where: {
                 email: req.params.email

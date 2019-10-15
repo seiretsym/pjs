@@ -5,12 +5,15 @@ $(function() {
     })
     $("#login").on("click", function(event) {
         event.preventDefault();
-        var query = "/api/user/" + $("#email").val().trim()
+        
         $.ajax({
-            url: query,
-            type: "GET"
+            url: "/api/user/",
+            type: "GET",
+            data: { email: $("#email").val().trim() }
         }).then(function(data) {
             console.log(data)
+        }).catch(function(err) {
+            console.log(err)
         })
     })
 })
