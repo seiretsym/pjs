@@ -1,0 +1,26 @@
+<form>
+    <label>Email:</label><br>
+    <input type="email" id="email"><br>
+    <label>Password:</label><br>
+    <input type="password" id="password"><br>
+    <label>Confirm Password:</label><br>
+    <input type="password" id="password2"><br><br>
+    <input type="submit" id="submit"><br>
+</form>
+
+<script>
+    $("#submit").on("click", function(event) {
+        event.preventDefault();
+        var user = {
+            email: $("#email").val().trim(),
+            password: $("#password").val().trim()
+        }
+        $.ajax({
+            url: "/api/user",
+            type: "POST",
+            data: user
+        }).then(function() {
+            location.reload();
+        })
+    })
+</script>
