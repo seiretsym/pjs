@@ -1,0 +1,26 @@
+{
+    "development": {
+        "username": "username",
+        "password": "username",
+        "database": "pinnedjobs",
+        "host": "107.180.108.9",
+        "dialect": "mysql",
+        "operatorsAliases": false
+    },
+    "test": {
+        "username": "username",
+        "password": "username",
+        "database": "pinnedjobs",
+        "host": "107.180.108.9",
+        "dialect": "mysql",
+        "operatorsAliases": false
+    },
+    "production": {
+        "username": "username",
+        "password": "username",
+        "database": "pinnedjobs",
+        "host": "107.180.108.9",
+        "dialect": "mysql",
+        "operatorsAliases": false
+    }
+}

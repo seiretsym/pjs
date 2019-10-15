@@ -1,36 +1,45 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="style.css">
-    <title>Pinjobs</title>
-</head>
-
-<body>
-    <div id="landing" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="text-center">
-                    <h5>Welcome to Pinjobs</h5>
-                    <h7>Easy to use tech search engine..</h7>
-                </div>
-                <div class="modal-body">
-                    <input class="form-control form-control-lg" type="text" placeholder="Email"><br>
-                    <input class="form-control form-control-lg" type="text" placeholder="Create a Password"><br>
-                    <input class="form-control form-control-lg" type="text" placeholder="Career"><br>
-                </div>
-                <div class="text-center">
-                    <button id="login" type="button" class="btn btn-danger btn-lg btn-block">Log-In</button>
-                </div>
-                <h8>SIGN UP FOR FREE</h8>
+<nav class="navbar navbar-light bg-light s">
+	<a class="navbar-brand" href="#">
+		<img src="logo-dark128x.png" width="48" height="48" alt="">
+	</a>
+	<form class="form-inline mr-auto">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	</form>
+	<a class="navbar-brand" href="#">
+		Profile
+	</a>
+</nav>
+<div class="d-flex flex-wrap">
+{{#each jobspost}}
+<div id="jobpost" class="card bg-dark text-white ml-3 mt-3">
+    <img src="Screen Shot 2019-10-13 at 10.17.37 PM.png" class="card-img img-fluid" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Full Stack Web Developer</h5>
+        <p class="card-text">
+            Google</p>
+        <p class="card-text">San Francisco, CA</p>
+    </div>
+</div>
+</div>
+</div>
+<div id="landing" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-3">
+            <div class="text-center">
+                <h5>Welcome to Pinjobs</h5>
+                <h7>Easy to use tech search engine..</h7>
             </div>
+            <div class="modal-body">
+                <input class="form-control form-control-lg" type="text" placeholder="Email"><br>
+                <input class="form-control form-control-lg" type="text" placeholder="Create a Password"><br>
+                <input class="form-control form-control-lg" type="text" placeholder="Career"><br>
+            </div>
+            <div class="text-center">
+                <button id="login" type="button" class="btn btn-danger btn-lg btn-block">Log-In</button>
+            </div>
+            <h8>SIGN UP FOR FREE</h8>
         </div>
     </div>
-    <script>
-        $("#landing").modal("toggle")</script>
-</body>
-
-</html>
+</div>
+<script>
+    $("#landing").modal("toggle")</script>

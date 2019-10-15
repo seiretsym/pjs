@@ -18,6 +18,11 @@ h8 {
     margin-left: 100px;
 }
 
+#jobpost {
+    height: 350px;
+    width: 300px;
+}
+
 #login {
     width: 270px;
     margin-left: 115px;
