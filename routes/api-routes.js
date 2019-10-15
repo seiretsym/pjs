@@ -16,4 +16,18 @@ module.exports = function(app) {
             res.json(result);
         })
     })
+
+    // Get employee profile based on city name
+    app.get("/api/new/profile/:cityName", function(req, res){
+        var cityName = req.params.cityName;
+
+        db.Profile.findAll({
+            where: {
+              city: cityName
+            }
+          }).then(function(result) {
+            console.log(result);
+            res.json(result);
+          });
+    })
 }
