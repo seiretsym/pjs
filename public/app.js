@@ -55,9 +55,8 @@ $(document).ready(function () {
             console.log("Retrived data client side");
             console.log(data);
             for(var i=0; i<data.length; i++){
-                var list = $("<ol>");
-                list.append("<li>" + data[i].firstname + "</li>");
-                list.append("<li>" + data[i].lastname + "</li>");
+                var list = $("<ul>");
+                list.append("<li>" + data[i].firstname + " " + data[i].lastname + "</li>");
                 list.append("<li>" + data[i].jobPreference + "</li>");
                 list.append("<li>" + data[i].skills + "</li>");
                 list.append("<li>" + data[i].linkedin + "</li>");
