@@ -1,32 +1,29 @@
 $(function () {
     var signedin = false;
 
-    // $("#landing").modal({
-    //     show: true,
-    //     backdrop: false,
-    // })
+    $("#landing").modal({
+        show: true,
+        backdrop: false,
+    })
 
     $("#profile").on("click", function (event) {
         event.preventDefault();
         $("#profilemodal").modal({
             show: true,
-            backdrop: false,
         })
     })
 
     $("#applied").on("click", function (event) {
         event.preventDefault();
-        $("j-applied").modal({
+        $("#j-applied").modal({
             show: true,
-            backdrop: false,
         })
     })
 
     $("#post").on("click", function (event) {
         event.preventDefault();
-        $("j-post").modal({
+        $("#j-post").modal({
             show: true,
-            backdrop: false,
         })
     })
 
@@ -90,15 +87,17 @@ $(function () {
             // get password values
             var pw = $("#password").val();
             var pwConfirm = $("#pwConfirm").val();
+            var type = $("input[name=p-type]:checked").val();
 
             // validate passwords
-            if (pw === pwConfirm) {
+            if (pw === pwConfirm && pw) {
                 $.ajax({
                     url: "/api/user",
                     type: "POST",
                     data: {
                         email: email,
-                        password: pw
+                        password: pw,
+                        accountType: type
                     }
                 }).then(function (data) {
                     // run signedIn function
@@ -157,6 +156,7 @@ $(function () {
         employeeButton.attr("id", "p-type");
         employeeButton.attr("name", "p-type");
         employeeButton.attr("value", "Employee");
+        employeeButton.prop("checked", true)
 
         var secondLabel = $("<label>").addClass("m-0");
         secondLabel.append("Employee")

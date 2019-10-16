@@ -16,8 +16,14 @@ module.exports = function(sequelize, DataTypes) {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+        },
+        accountType: {
+            type: DataTypes.STRING,
+            allowNull: false, 
         }
+
+
     // hashing password /encrypting
     // }, {
     //     instanceMethods: {
