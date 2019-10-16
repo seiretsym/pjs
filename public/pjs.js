@@ -22,11 +22,18 @@ $(function () {
         })
     })
 
+    $("#post").on("click", function (event) {
+        event.preventDefault();
+        $("j-post").modal({
+            show: true,
+            backdrop: false,
+        })
+    })
+
     $("#gtfo").on("click", function (event) {
         event.preventDefault();
         location.reload();
     })
-
 
     $("#login").on("click", function (event) {
         event.preventDefault();
