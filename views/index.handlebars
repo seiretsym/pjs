@@ -6,7 +6,19 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
     <span id="welcome" class="navbar-brand"></span>
-    <a id="user" class="navbar-brand" href="#"></a>
+    <div class="dropdown">
+        <a id="user" class="navbar-brand text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User Email
+        </a>
+        <div class="dropdown-menu p-1" aria-labelledby="dropdownMenuLink">
+            <a id="profile" class="dropdown-item" href="#">Profile</a>
+            <hr class="m-1 p-0">
+            <a id="applied" class="dropdown-item" href="#">Applied Jobs</a>
+            <hr class="m-1 p-0">
+            <a id="gtfo" class="dropdown-item" href="#">Sign Out</a>
+        </div>
+    </div>
 </nav>
 <div class="d-flex flex-wrap">
     {{#each jobspost}}
@@ -25,15 +37,110 @@
 <div id="landing" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content p-3 text-center">
-                <h5>Welcome to Pinjobs</h5>
-                <h7>Easy to use tech search engine..</h7>
+            <h5>Welcome to Pinjobs</h5>
+            <h7>Easy to use tech search engine..</h7>
             <div class="modal-body">
                 <form>
                     <fieldset id="login-form">
                         <input id="email" class="form-control form-control-lg" type="text" placeholder="Email">
                     </fieldset>
-                        <button id="login" type="submit" class="btn btn-danger btn-lg btn-block w-100 mt-3" data-state="login">Log-In</button>
+                    <button id="login" type="submit" class="btn btn-danger btn-lg btn-block w-100 mt-3"
+                        data-state="login">Log-In</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Modal -->
+<div id="profilemodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Profile</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="custom-control custom-radio d-flex p-0 m-0 pb-3">
+                        <div class="form-group m-0">
+                            <label class="m-0" for="customRadioInline1">Account Type:</label>
+                        </div>
+                        <div class="form-group ml-3 m-0">
+
+                            <input type="radio" id="p-type" name="p-type" class="mx-2" value="Employee">
+                            <label class="m-0">Employee</label>
+                        </div>
+                        <div class="form-group ml-3 m-0">
+                            <input type="radio" id="p-type" name="p-type" class="mx-2" value="Employer">
+                            <label class="m-0">Employer</label>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex">
+                        <input type="name" class="form-control mr-1" id="p-first" placeholder="First Name" required>
+                        <input type="name" class="form-control ml-1" id="p-last" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group d-flex">
+                        <input type="city" class="form-control mr-1" id="p-city" placeholder="City" required>
+                        <input type="state" class="form-control ml-1" id="p-state" placeholder="State" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="name" class="form-control" id="p-link"
+                            placeholder="URL: website, linkedin, portfolio, etc." required>
+                    </div>
+                    <div class="form-group">
+                        <input type="name" class="form-control" id="p-skills"
+                            placeholder="Skills: css, html, javascript, etc." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Career Interests</label>
+                        <select multiple class="form-control" id="p-interest">
+                            <option>Web Developer</option>
+                            <option>Full-Stack Developer</option>
+                            <option>UX Designer</option>
+                            <option>UI Designer</option>
+                            <option>Backend Engineer</option>
+                            <option>Instructor</option>
+                            <option>Frontend Engineer</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Applications Modal -->
+<div class="modal fade" id="j-applied" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Applications</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="j-list" class="modal-body">
+                <div class="card overflow-auto" style="height: 250px">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

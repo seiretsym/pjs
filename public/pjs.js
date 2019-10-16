@@ -1,25 +1,13 @@
 $(function() {
     var signedin = false;
 
-    $("#landing").modal({
+    $("#j-applied").modal({
         show: true,
         backdrop: false,
     })
 
     $("#login").on("click", function(event) {
         event.preventDefault();
-<<<<<<< HEAD
-        
-        $.ajax({
-            url: "/api/user/",
-            type: "PUT",
-            data: { email: $("#email").val().trim() }
-        }).then(function(data) {
-            console.log(data)
-        }).catch(function(err) {
-            console.log(err)
-        })
-=======
 
         // get email value
         var email = $("#email").val().trim()
@@ -97,7 +85,6 @@ $(function() {
                 $("#pwConfirm").focus();
             }
         }
->>>>>>> 4d98618c0da8855a386e6b3e1489fe8b985ffff1
     })
 
     function signIn() {
