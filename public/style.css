@@ -13,20 +13,11 @@ h8 {
     margin-left: 115px;
 }
 
-.modal-body {
-    width: 300px;
-    margin-left: 100px;
-}
-
 #jobpost {
     height: 350px;
     width: 300px;
 }
 
-#login {
-    width: 270px;
-    margin-left: 115px;
-}
 @media screen and (max-width: 1024px){
     img.bg {
     left: 50%;
