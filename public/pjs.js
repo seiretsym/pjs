@@ -1,7 +1,7 @@
 $(function() {
     var signedin = false;
 
-    $("#j-applied").modal({
+    $("#j-post").modal({
         show: true,
         backdrop: false,
     })

@@ -128,19 +128,53 @@
             <div id="j-list" class="modal-body">
                 <div class="card overflow-auto" style="height: 250px">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        {{!-- {{ #each jobposts }}
+                        <li class="list-group-item">{{title}} - {{city}}, {{state}}</li>
+                        {{ /each }} --}}
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- Job Posts Modal --}}
+<div id="j-post" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Job Posts</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-flex">
+                        <input type="title" class="form-control" id="j-title" placeholder="Job Title" required>
+                    </div>
+                    <div class="form-group d-flex">
+                        <textarea type="desc" class="form-control" rows="4" id="j-desc" placeholder="Description"
+                            required></textarea>
+                    </div>
+                    <div class="form-group d-flex">
+                        <input type="city" class="form-control mr-1" id="p-city" placeholder="City" required>
+                        <input type="state" class="form-control ml-1" id="p-state" placeholder="State" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Qualifications</label>
+                        <select multiple class="form-control" id="j-interest">
+                            <option>Web Developer</option>
+                            <option>Full-Stack Developer</option>
+                            <option>UX Designer</option>
+                            <option>UI Designer</option>
+                            <option>Backend Engineer</option>
+                            <option>Instructor</option>
+                            <option>Frontend Engineer</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save Changes</button>
             </div>
         </div>
     </div>
