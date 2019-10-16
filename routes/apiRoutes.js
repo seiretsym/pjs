@@ -5,11 +5,10 @@ module.exports = function (app) {
         res.render("index", { test: "test" })
     })
 
-    app.get("/api/user/", function (req, res) {
-        db.user.find({
-            where: {
-                email: req.body.email
-            }
+    app.put("/api/user/", function (req, res) {
+        console.log(req)
+        db.users.findAll({
+            where: req.body
         }).then(function(data) {
             res.json(data)
         }).catch(function(err) {
@@ -18,7 +17,7 @@ module.exports = function (app) {
     })
 
     app.post("/api/user/", function (req, res) {
-        db.user.create(req.body).then(function (data) {
+        db.users.create(req.body).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err)
