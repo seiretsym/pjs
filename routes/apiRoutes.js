@@ -5,8 +5,8 @@ module.exports = function (app) {
         res.render("index", { test: "test" })
     })
 
-    app.get("/api/user/", function (req, res) {
-        db.user.find({
+    app.put("/api/user/", function (req, res) {
+        db.users.findAll({
             where: {
                 email: req.body.email
             }
@@ -18,7 +18,7 @@ module.exports = function (app) {
     })
 
     app.post("/api/user/", function (req, res) {
-        db.user.create(req.body).then(function (data) {
+        db.users.create(req.body).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err)

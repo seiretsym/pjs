@@ -8,7 +8,7 @@ $(function() {
         
         $.ajax({
             url: "/api/user/",
-            type: "GET",
+            type: "PUT",
             data: { email: $("#email").val().trim() }
         }).then(function(data) {
             console.log(data)
