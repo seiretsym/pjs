@@ -1,12 +1,34 @@
-$(function() {
+$(function () {
     var signedin = false;
 
-    $("#j-post").modal({
-        show: true,
-        backdrop: false,
+    // $("#landing").modal({
+    //     show: true,
+    //     backdrop: false,
+    // })
+
+    $("#profile").on("click", function (event) {
+        event.preventDefault();
+        $("#profilemodal").modal({
+            show: true,
+            backdrop: false,
+        })
     })
 
-    $("#login").on("click", function(event) {
+    $("#applied").on("click", function (event) {
+        event.preventDefault();
+        $("j-applied").modal({
+            show: true,
+            backdrop: false,
+        })
+    })
+
+    $("#gtfo").on("click", function (event) {
+        event.preventDefault();
+        location.reload();
+    })
+
+
+    $("#login").on("click", function (event) {
         event.preventDefault();
 
         // get email value
@@ -18,13 +40,13 @@ $(function() {
                 url: "/api/user/",
                 type: "PUT",
                 data: { email: email }
-            }).then(function(data) {
+            }).then(function (data) {
                 if (data.length > 0) {
                     signIn();
                 } else {
                     signUp();
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 console.log(err);
             })
         } else if ($(this).data("state") === "password") {
@@ -38,8 +60,8 @@ $(function() {
                 data: {
                     email: email,
                     password: pw
-                 }
-            }).then(function(data) {
+                }
+            }).then(function (data) {
                 // if password matches...
                 if (data.length > 0) {
                     // change signedin state
@@ -52,7 +74,7 @@ $(function() {
                     $("#password").val("")
                     $("#password").focus();
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 // error handling
                 console.log(err)
             });
@@ -71,10 +93,10 @@ $(function() {
                         email: email,
                         password: pw
                     }
-                }).then(function(data) {
+                }).then(function (data) {
                     // run signedIn function
-                    signedIn(email); 
-                }).catch(function(err) {
+                    signedIn(email);
+                }).catch(function (err) {
                     // error handling
                     console.log(err);
                 });
@@ -120,6 +142,27 @@ $(function() {
         pwConfirm.attr("placeholder", "Confirm your password");
         pwConfirm.prop("required", true);
 
+        var firstLabel = $("<label>").addClass("m-0");
+        firstLabel.append("Account Type:")
+
+        var employeeButton = $("<input>").addClass("mx-2");
+        employeeButton.attr("type", "radio");
+        employeeButton.attr("id", "p-type");
+        employeeButton.attr("name", "p-type");
+        employeeButton.attr("value", "Employee");
+
+        var secondLabel = $("<label>").addClass("m-0");
+        secondLabel.append("Employee")
+
+        var employerButton = $("<input>").addClass("mx-2");
+        employerButton.attr("type", "radio");
+        employerButton.attr("id", "p-type");
+        employerButton.attr("name", "p-type");
+        employerButton.attr("value", "Employer");
+
+        var thirdLabel = $("<label>").addClass("m-0");
+        thirdLabel.append("Employer")
+
         // set email input field to readonly
         $("#email").prop("readonly", true);
 
@@ -127,7 +170,7 @@ $(function() {
         $("#login").data("state", "signup");
 
         // append password input/confirm to modal
-        $("#login-form").append(pwInput, pwConfirm);
+        $("#login-form").append(pwInput, pwConfirm, firstLabel, employeeButton, secondLabel, employerButton, thirdLabel);
     }
 
     function signedIn(email) {
