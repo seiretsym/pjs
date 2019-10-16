@@ -46,6 +46,17 @@ $(document).ready(function () {
         getProfileByCity(searchCityName);
     })
 
+    // On click of view button
+    $("#view-btn").on("click", function(event){
+        event.preventDefault();
+        $.ajax("/api/all/employee", {
+            type: "GET"
+        }).then(function (data){
+            console.log("Client side view all employees");
+            console.log(data);
+        })
+    })
+
     // Function to retrieve employee profile based on their city
     function getProfileByCity(cityName){
         // Get profile from table based on city
@@ -68,4 +79,27 @@ $(document).ready(function () {
             // location.reload();
         })
     }
+
+    // To retrive all employers details
+    $("#submit-btn-employer").on("click", function(event){
+        event.preventDefault();
+
+        // Input values
+        var title = $("#input-title").val().trim();
+        var desc = $("#input-desc").val().trim();
+        var qualification = $("#input-qualification").val().trim();
+
+        var newEmployer = {
+            title: title,
+            desc: desc,
+            qualification: qualification
+        }
+        $.ajax("/api/new/employer", {
+            type: "POST",
+            data: newEmployer
+        }).then(function(result){
+            console.log("New employer created");
+
+        })
+    })
 })
