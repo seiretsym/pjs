@@ -22,10 +22,25 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
-        // example: "2 years, CSS, JS, REACT, Node"
-        // string will be parsed into an array for comparing with user skills/experience/etc
+        // job location
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        state: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [2, 2]
+            }
+        },
+ 
         qualifications: {
-            type: DataTypes, STRING,
+            type: DataTypes.STRING,
+
             allowNull: false,
             validate: {
                 len: [1]
