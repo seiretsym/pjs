@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         jobId: {
             type: DataTypes.BOOLEAN
         },
-        userId: {
+        profileId: {
             type: DataTypes.BOOLEAN
         },
         accepted: {

@@ -59,11 +59,11 @@ module.exports = function(sequelize, DataTypes){
         });
       };
 
-    //   Profile.associate = function(models) {
-    //       models.Profile.hasOne(models.Status, {
-    //           onDelete: "CASCADE"
-    //       });
-    //   };
+      Profile.associate = function(models) {
+          models.Profile.hasMany(models.Status, {
+              onDelete: "CASCADE"
+          });
+      };
 
     return Profile;
 }

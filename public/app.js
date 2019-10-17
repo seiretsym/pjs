@@ -156,48 +156,21 @@ $(document).ready(function () {
     // Acceptance of employee
     $(document).on("click", "#accept-btn", function (event) {
         event.preventDefault();
+
         var buttonId = $(this).data("id");
-        console.log("Inside accept button");
+        console.log("Inside apply button");
         console.log(buttonId);
-
-        var newStatus = {
-            id: buttonId,
-            employerId: employerId,
-            accepted: true
-        }
-
-        // Update Job table 
-        $.ajax("/api/employer/" + buttonId, {
-            type: "PUT",
-            data: newStatus
-        }).then(function (result) {
-            console.log(result);
-            console.log("Updated accepted value");
-            employerTracker(buttonId, employerId, true);
-
-        })
+        employerTracker(buttonId, employerId, true);
     })
 
     // Decline button
     $(document).on("click", "#decline-btn", function (event) {
         event.preventDefault();
+
         var buttonId = $(this).data("id");
         console.log("Inside decline button");
         console.log(buttonId);
-
-        var status = {
-            id: buttonId,
-            declined: true
-        }
-        // Update job table
-        $.ajax("/api/employer/" + buttonId, {
-            type: "PUT",
-            data: status
-        }).then(function (result) {
-            console.log(result);
-            console.log("Updated declined value");
-            employerTracker(buttonId, employerId, false);
-        })
+        employerTracker(buttonId, employerId, false);
     })
 
     // Function to update status table
@@ -206,8 +179,7 @@ $(document).ready(function () {
         var status = {
             userId: userId,
             jobId: jobId,
-            appliedValue: value,
-            savedValue: false
+            accepted: value
         }
         $.ajax("/api/employer/status", {
             type: "POST",
@@ -311,6 +283,29 @@ $(document).ready(function () {
                     list.append("<li>" + data[i].qualifications + "</li>");
                     list.append("<hr>");
                     $("#saved-jobs").append(list);
+                }
+            })
+        })
+        
+        // View all accepted candidates
+        $(document).on("click", "#view-btn-accepted", function (event) {
+            event.preventDefault();
+    
+            console.log("Inside view all accepted candidates");
+            $.ajax("/api/all/accepted/" + employerId, {
+                type: "GET"
+            }).then(function (data) {
+                console.log("All accepted candidates");
+                console.log(data);
+    
+                // Iterating through data to create a table
+                for (i = 0; i < data.length; i++) {
+                    var list = $("<ul>");
+                    list.append("<li>" + data[i].title + "</li>");
+                    list.append("<li>" + data[i].description + "</li>");
+                    list.append("<li>" + data[i].qualifications + "</li>");
+                    list.append("<hr>");
+                    $("#accepted-candidates").append(list);
                 }
             })
         })

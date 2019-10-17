@@ -15,6 +15,8 @@ module.exports = function (app) {
 
         }).then(function (result) {
             res.json(result);
+        }).catch(function(err) {
+            console.log(err);
         })
     })
 
@@ -93,14 +95,12 @@ module.exports = function (app) {
         
             db.Status.create({
                 jobId: req.body.jobId,
-                userId: req.body.userId,
-                accepted: req.body.value
+                profileId: req.body.userId,
+                accepted: req.body.accepted
     
             }).then(function (result) {
-                console.log(result);
+                // console.log(result);
                 res.json(result);
-            }).catch(function(err) {
-                console.log(err);
             })
         })
 
@@ -109,7 +109,7 @@ module.exports = function (app) {
         
         db.Status.create({
             jobId: req.body.jobId,
-            userId: req.body.userId,
+            profileId: req.body.userId,
             applied: req.body.appliedValue,
             saved: req.body.savedValue
 
@@ -126,9 +126,9 @@ module.exports = function (app) {
         db.Job.findAll({
             include: [{
                 model: db.Status,
-                attributes: ['userId', 'applied'],
+                attributes: ['profileId', 'applied'],
                 where: {
-                    userId: req.params.employeeId,
+                    profileId: req.params.employeeId,
                     applied: 1
                   }}],
             
@@ -144,9 +144,9 @@ module.exports = function (app) {
             db.Job.findAll({
                 include: [{
                     model: db.Status,
-                    attributes: ['userId', 'saved'],
+                    attributes: ['profileId', 'saved'],
                     where: {
-                        userId: req.params.employeeId,
+                        profileId: req.params.employeeId,
                         saved: 1
                       }}],
                 
@@ -156,4 +156,22 @@ module.exports = function (app) {
                   console.log(err);
               })
         });
+        
+                // All accepted candidates
+                app.get("/api/all/accepted/:employerId", function (req, res) {
+                    db.Profile.findAll({
+                        include: [{
+                            model: db.Status,
+                            attributes: ['jobId', 'accepted'],
+                            where: {
+                                jobId: req.params.employerId,
+                                accepted: 1
+                              }}],
+                        
+                      }).then(function(result) {
+                        res.json(result);
+                      }).catch(function(err){
+                          console.log(err);
+                      })
+                });
 }
