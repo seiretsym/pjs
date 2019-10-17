@@ -6,6 +6,9 @@ body {
     background-repeat: no-repeat;
 }
 
+textarea {
+    resize: none;
+}
 h8 {
     color: grey;
     font-family: 'Gotham';
