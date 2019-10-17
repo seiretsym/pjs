@@ -165,7 +165,7 @@ $(document).ready(function () {
             employerId: employerId,
             accepted: true
         }
-    
+
         // Update Job table 
         $.ajax("/api/employer/" + buttonId, {
             type: "PUT",
@@ -201,24 +201,48 @@ $(document).ready(function () {
     })
 
     // Function to update status table
-    function employerTracker(userId, jobId, value){
+    function employerTracker(userId, jobId, value) {
 
         var status = {
             userId: userId,
             jobId: jobId,
             value: value
         }
-        $.ajax("/api/status", {
+        $.ajax("/api/employer/status", {
             type: "POST",
             data: status
-        }).then(function(result){
+        }).then(function (result) {
             console.log("Values inserted to status table");
             console.log(result);
         })
     }
 
     // Below function is triggered on click of apply button by candidate
-    $(document).on("click", function(event){
-        event.preventDefault();  
+    $(document).on("click", "#apply-btn", function (event) {
+        event.preventDefault();
+
+        var buttonId = $(this).data("id");
+        console.log("Inside apply button");
+        console.log(buttonId);
+        employeeTracker(employeeId, buttonId, true);
+
     })
+
+    // Function to update status table
+    function employeeTracker(userId, jobId, value) {
+
+        var status = {
+            userId: userId,
+            jobId: jobId,
+            value: value
+        }
+        $.ajax("/api/employee/status", {
+            type: "POST",
+            data: status
+        }).then(function (result) {
+            console.log("Values inserted to status table");
+            console.log(result);
+        })
+    }
+
 })

@@ -88,8 +88,8 @@ module.exports = function (app) {
           })
     })
 
-    // POST value to status table
-    app.post("/api/status", function(req, res){
+    // POST value to status table for employer
+    app.post("/api/employer/status", function(req, res){
         
             db.Status.create({
                 jobId: req.body.jobId,
@@ -103,6 +103,22 @@ module.exports = function (app) {
                 console.log(err);
             })
         })
+
+           // POST value to status table for employee
+    app.post("/api/employee/status", function(req, res){
+        
+        db.Status.create({
+            jobId: req.body.jobId,
+            userId: req.body.userId,
+            applied: req.body.value
+
+        }).then(function (result) {
+            console.log(result);
+            res.json(result);
+        }).catch(function(err) {
+            console.log(err);
+        })
+    })
 
 
     // Update query
