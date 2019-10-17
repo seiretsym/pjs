@@ -9,10 +9,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="app.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="app.js"></script>
 
     <title>User Profile Form</title>
 </head>
@@ -72,23 +72,23 @@
                     <input type="state" class="form-control" id="input-state" aria-describedby="emailHelp"
                         placeholder="Enter your State">
                 </div>
-                <button type="submit" class="btn btn-primary"id="submit-btn">Submit</button><br><br>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button><br><br>
                 <!-- Search profile by city -->
                 <div class="form-group">
-                        <label for="profile-city">Search Profile city</label>
-                        <input type="profile-city" class="form-control" id="profile-city" aria-describedby="emailHelp"
-                            placeholder="Enter a City">
-                    </div>
-                    <button type="submit" class="btn btn-primary"id="search-btn">Search</button><br><br>
-                    <!-- Place holder for search results -->
-                    <div id="searchResult">
+                    <label for="profile-city">Search Profile city</label>
+                    <input type="profile-city" class="form-control" id="profile-city" aria-describedby="emailHelp"
+                        placeholder="Enter a City">
+                </div>
+                <button type="submit" class="btn btn-primary" id="search-btn">Search</button><br><br>
+                <!-- Place holder for search results -->
+                <div id="searchResult">
 
-                    </div>
-                    <button type="submit" class="btn btn-primary"id="view-btn">View All Employees</button><br><br>
-                    <!-- Place holder for search results -->
-                    <div id="allEmployees">
+                </div>
+                <button type="submit" class="btn btn-primary" id="view-btn">View All Employees</button><br><br>
+                <!-- Place holder for search results -->
+                <div id="allEmployees">
 
-                        </div>
+                </div>
             </form>
         </div>
         <div class="col-md-2"></div>
@@ -96,38 +96,50 @@
     <!-- Employer details -->
     <!-- Row1 -->
     <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                    <h1>Employer details</h1>
-                <!-- Form -->
-                <form>
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="title" class="form-control" id="input-title" aria-describedby="emailHelp"
-                            placeholder="Title">
-                    </div>
-                    <div class="form-group">
-                        <label for="desc">Description</label>
-                        <input type="desc" class="form-control" id="input-desc" aria-describedby="emailHelp"
-                            placeholder="Job Description">
-                    </div>
-                    <div class="form-group">
-                        <label for="qualification">Qualification</label>
-                        <input type="qualification" class="form-control" id="input-qualification" aria-describedby="emailHelp"
-                            placeholder="Qualification">
-                    </div>
-                   
-                    <button type="submit" class="btn btn-primary"id="submit-btn-employer">Submit</button><br><br>
-                    <button type="submit" class="btn btn-primary"id="view-btn-employer">View All Employers</button>
-                    <!-- Place holder for search results -->
-                    <div id="allEmployers">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1>Employer details</h1>
+            <!-- Form -->
+            <form>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="title" class="form-control" id="input-title" aria-describedby="emailHelp"
+                        placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <input type="desc" class="form-control" id="input-desc" aria-describedby="emailHelp"
+                        placeholder="Job Description">
+                </div>
+                <div class="form-group">
+                    <label for="qualification">Qualification</label>
+                    <input type="qualification" class="form-control" id="input-qualification"
+                        aria-describedby="emailHelp" placeholder="Qualification">
+                </div>
 
-                        </div>
-                    
-                </form>
-            </div>
-            <div class="col-md-2"></div>
+                <button type="submit" class="btn btn-primary" id="submit-btn-employer">Submit</button><br><br>
+                <button type="submit" class="btn btn-primary" id="view-btn-employer">View All Employers</button>
+                <!-- Place holder for search results -->
+                <div id="allEmployers">
+
+                </div>
+                <button type="submit" class="btn btn-success" id="view-btn-applied">Applied Jobs</button>
+                <button type="submit" class="btn btn-warning" id="view-btn-saved">Saved Jobs</button>
+                <!-- Place holder for applied jobs -->
+                <div id="applied-jobs">
+
+
+                </div>
+                <!-- Place holder for saved jobs -->
+                <div id="applied-jobs">
+
+
+                    </div>
+
+            </form>
         </div>
+        <div class="col-md-2"></div>
+    </div>
 </body>
 
 </html>

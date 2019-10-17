@@ -110,7 +110,8 @@ module.exports = function (app) {
         db.Status.create({
             jobId: req.body.jobId,
             userId: req.body.userId,
-            applied: req.body.value
+            applied: req.body.appliedValue,
+            saved: req.body.savedValue
 
         }).then(function (result) {
             console.log(result);
@@ -120,18 +121,21 @@ module.exports = function (app) {
         })
     })
 
-
-    // Update query
-    // app.get("/api/profile/update/:newcity", function(req, res){
-    //     var newcity = req.params.newcity;
-
-    //     db.Profile.update({
-    //         city: newcity
-    //       }, {
-    //         where: {
-    //           id: id
-    //         }
-    //       })
-    // })
-
+    // All jobs applied by a particular employee
+    app.get("/api/all/applied/:employeeId", function (req, res) {
+        db.Job.findAll({
+            include: [{
+                model: db.Status,
+                attributes: ['userId', 'applied'],
+                where: {
+                    userId: req.params.employeeId,
+                    applied: 1
+                  }}],
+            
+          }).then(function(result) {
+            res.json(result);
+          }).catch(function(err){
+              console.log(err);
+          })
+    });
 }

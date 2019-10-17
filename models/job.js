@@ -46,11 +46,11 @@ module.exports = function(sequelize, DataTypes) {
         });
       };
 
-    //   Job.associate = function(models) {
-    //       models.Job.hasOne(models.Status, {
-    //           onDelete: "CASCADE"
-    //       });
-    //   };
+      Job.associate = function(models) {
+          models.Job.hasMany(models.Status, {
+              onDelete: "CASCADE"
+          });
+      };
     
     return Job;
 }

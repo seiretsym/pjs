@@ -1,8 +1,8 @@
 $(document).ready(function () {
     // Global variable
     var i;
-    var employeeId = 2;
-    var employerId = 1;
+    var employeeId = 1;
+    var employerId = 2;
 
     // On click of submit button, grab user input
     $("#submit-btn").on("click", function (event) {
@@ -96,7 +96,7 @@ $(document).ready(function () {
                 $("#searchResult").append(list);
             }
             // To reload the page
-            // location.reload();
+            location.reload();
         })
     }
 
@@ -206,7 +206,8 @@ $(document).ready(function () {
         var status = {
             userId: userId,
             jobId: jobId,
-            value: value
+            appliedValue: value,
+            savedValue: false
         }
         $.ajax("/api/employer/status", {
             type: "POST",
@@ -224,17 +225,40 @@ $(document).ready(function () {
         var buttonId = $(this).data("id");
         console.log("Inside apply button");
         console.log(buttonId);
-        employeeTracker(employeeId, buttonId, true);
+        employeeTracker(employeeId, buttonId, true, false);
+
+    })
+
+    // Below function is triggered on click of save button by candidate
+    $(document).on("click", "#save-btn", function (event) {
+        event.preventDefault();
+
+        var buttonId = $(this).data("id");
+        console.log("Inside apply button");
+        console.log(buttonId);
+        employeeTracker(employeeId, buttonId, false, true);
+
+    })
+
+    // Below function is triggered on click of not interested button by candidate
+    $(document).on("click", "#not-interested-btn", function (event) {
+        event.preventDefault();
+
+        var buttonId = $(this).data("id");
+        console.log("Inside apply button");
+        console.log(buttonId);
+        employeeTracker(employeeId, buttonId, false, false);
 
     })
 
     // Function to update status table
-    function employeeTracker(userId, jobId, value) {
+    function employeeTracker(userId, jobId, value1, value2) {
 
         var status = {
             userId: userId,
             jobId: jobId,
-            value: value
+            appliedValue: value1,
+            savedValue: value2
         }
         $.ajax("/api/employee/status", {
             type: "POST",
@@ -244,5 +268,32 @@ $(document).ready(function () {
             console.log(result);
         })
     }
+
+    // View all jobs that particular candidate had applied
+    $(document).on("click", "#view-btn-applied", function (event) {
+        event.preventDefault();
+
+        console.log("Inside view all apply button");
+        $.ajax("/api/all/applied/" + employeeId, {
+            type: "GET"
+        }).then(function (data) {
+            console.log("All jobs that are applied");
+            console.log(data);
+
+            // Iterating through data to create a table
+            for (i = 0; i < data.length; i++) {
+                var list = $("<ul>");
+                list.append("<li>" + data[i].title + "</li>");
+                list.append("<li>" + data[i].description + "</li>");
+                list.append("<li>" + data[i].qualifications + "</li>");
+                list.append("<hr>");
+                $("#applied-jobs").append(list);
+            }
+
+
+        })
+
+    })
+
 
 })
