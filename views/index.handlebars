@@ -32,12 +32,16 @@
         <img src="img/Screen Shot 2019-10-13 at 10.17.37 PM.png" class="card-img img-fluid" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">
-                {{company}}</p>
             <p class="card-text">{{city}}, {{state}}</p>
         </div>
     </div>
     {{/each}}
+    <div id = "jobpost">
+        {{!-- Place holder for job postings --}}
+    </div>
+    <div id ="allEmployees">
+        {{!-- Place holder to view all candidates --}}
+    </div>
 </div>
 </div>
 <div id="landing" class="modal" tabindex="-1" role="dialog">
@@ -83,24 +87,24 @@
                         </div>
                     </div>
                     <div class="form-group d-flex">
-                        <input type="name" class="form-control mr-1" id="p-first" placeholder="First Name" required>
-                        <input type="name" class="form-control ml-1" id="p-last" placeholder="Last Name" required>
+                        <input type="name" class="form-control mr-1" id="input-fname" placeholder="First Name" required>
+                        <input type="name" class="form-control ml-1" id="input-lname" placeholder="Last Name" required>
                     </div>
                     <div class="form-group d-flex">
-                        <input type="city" class="form-control mr-1" id="p-city" placeholder="City" required>
-                        <input type="state" class="form-control ml-1" id="p-state" placeholder="State" required>
+                        <input type="city" class="form-control mr-1" id="input-city" placeholder="City" required>
+                        <input type="state" class="form-control ml-1" id="input-state" placeholder="State" required>
                     </div>
                     <div class="form-group">
-                        <input type="name" class="form-control" id="p-link"
+                        <input type="name" class="form-control" id="input-linkedin"
                             placeholder="URL: website, linkedin, portfolio, etc." required>
                     </div>
                     <div class="form-group">
-                        <input type="name" class="form-control" id="p-skills"
+                        <input type="name" class="form-control" id="input-skills"
                             placeholder="Skills: css, html, javascript, etc." required>
                     </div>
                     <div class="form-group">
                         <label>Career Interests</label>
-                        <select multiple class="form-control" id="p-interest">
+                        <select multiple class="form-control" id="input-job">
                             <option>Web Developer</option>
                             <option>Full-Stack Developer</option>
                             <option>UX Designer</option>
@@ -114,7 +118,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save Changes</button>
+                <button type="button" class="btn btn-primary"id="submit-btn">Save Changes</button>
             </div>
         </div>
     </div>
@@ -154,19 +158,19 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group d-flex">
-                        <input type="title" class="form-control" id="j-title" placeholder="Job Title" required>
+                        <input type="title" class="form-control" id="input-title" placeholder="Job Title" required>
                     </div>
                     <div class="form-group d-flex">
-                        <textarea type="desc" class="form-control" rows="4" id="j-desc" placeholder="Description"
+                        <textarea type="desc" class="form-control" rows="4" id="input-desc" placeholder="Description"
                             required></textarea>
                     </div>
                     <div class="form-group d-flex">
-                        <input type="city" class="form-control mr-1" id="p-city" placeholder="City" required>
-                        <input type="state" class="form-control ml-1" id="p-state" placeholder="State" required>
+                        <input type="city" class="form-control mr-1" id="input-city-employer" placeholder="City" required>
+                        <input type="state" class="form-control ml-1" id="input-state-employer" placeholder="State" required>
                     </div>
                     <div class="form-group">
                         <label>Qualifications</label>
-                        <select multiple class="form-control" id="j-interest">
+                        <select multiple class="form-control" id="input-qualification">
                             <option>Web Developer</option>
                             <option>Full-Stack Developer</option>
                             <option>UX Designer</option>
@@ -180,7 +184,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save Changes</button>
+                <button type="button" class="btn btn-primary"id="submit-btn-employer">Save Changes</button>
             </div>
         </div>
     </div>

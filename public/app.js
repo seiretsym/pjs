@@ -11,13 +11,21 @@ $(document).ready(function () {
 
         var fname = $("#input-fname").val().trim();
         var lname = $("#input-lname").val().trim();
-        var job = $("#input-job").val().trim();
+        // var job = $("#input-job").val().trim();
+        var job = "";
+        $("#input-job option:selected").each(function(){
+            job += $(this).text() + ",";
+            
+        });
+        // var job = $("#yourid option[value="+v+"]").text();
+        console.log("JOB : " + job);
         var skills = $("#input-skills").val().trim();
         var linkedin = $("#input-linkedin").val().trim();
         var city = $("#input-city").val().trim();
         var state = $("#input-state").val().trim();
 
         populateProfile(fname, lname, job, skills, linkedin, city, state);
+        displayJobPosting();
     })
 
     // Function to insert values to profile table
@@ -39,7 +47,7 @@ $(document).ready(function () {
         }).then(function () {
             console.log("Created new employee");
             // To reload the page
-            location.reload();
+            // location.reload();
         })
     }
 
@@ -52,8 +60,9 @@ $(document).ready(function () {
     })
 
     // On click of view button
-    $("#view-btn").on("click", function (event) {
-        event.preventDefault();
+    // $("#view-btn").on("click", function (event) {
+        // event.preventDefault();
+        function displayAllEmployees(){
         $.ajax("/api/all/employee", {
             type: "GET"
         }).then(function (data) {
@@ -75,7 +84,7 @@ $(document).ready(function () {
 
             }
         })
-    })
+    }
 
     // Function to retrieve employee profile based on their city
     function getProfileByCity(cityName) {
@@ -107,12 +116,19 @@ $(document).ready(function () {
         // Input values
         var title = $("#input-title").val().trim();
         var desc = $("#input-desc").val().trim();
-        var qualification = $("#input-qualification").val().trim();
+        // var qualification = $("#input-qualification").val().trim();
+        var qualification = "";
+        $("#input-qualification option:selected").each(function(){
+            qualification += $(this).text() + ",";
+        var city = $("#input-city-employer").val().trim();
+        var state = $("#input-state-employer").val().trim();
 
         var newEmployer = {
             title: title,
             desc: desc,
-            qualification: qualification
+            qualification: qualification,
+            city: city,
+            state: state
         }
         $.ajax("/api/new/employer", {
             type: "POST",
@@ -121,14 +137,18 @@ $(document).ready(function () {
             console.log(result);
             console.log("New employer created");
             // To reload the page
-            location.reload();
+            // location.reload();
+            displayAllEmployees();
 
         })
     })
+})
 
     // To retrieve all employer details
-    $("#view-btn-employer").on("click", function (event) {
-        event.preventDefault();
+    // $("#view-btn-employer").on("click", function (event) {
+        // event.preventDefault();
+
+        function displayJobPosting(){
 
         $.ajax("/api/all/employer", {
             type: "GET"
@@ -147,11 +167,11 @@ $(document).ready(function () {
                 list.append("<button type = 'button' class='btn btn-danger' id='not-interested-btn' data-id=" + data[i].id + ">Not Interested</button>");
                 // <button type="submit" class="btn btn-primary"id="submit-btn-employer">Submit</button><br><br></br>
 
-                $("#allEmployers").append(list);
+                $("#jobpost").append(list);
 
             }
         })
-    })
+}
 
     // Acceptance of employee
     $(document).on("click", "#accept-btn", function (event) {

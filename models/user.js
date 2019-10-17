@@ -1,5 +1,3 @@
-var bcrypt = require("bcrypt-nodejs");
-
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("users", {
         // uuid: {
@@ -25,15 +23,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
     // hashing password /encrypting
-    }, {
-        instanceMethods: {
-            generateHash(password) {
-                return bcrypt.hash(password, bcrypt.genSaltSync(8))
-            },
-            validPassword(password) {
-                return bcrypt.compare(password, this.password);
-            }
-        }
+    
     });
     
     return User;

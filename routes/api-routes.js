@@ -2,6 +2,29 @@ var db = require("../models");
 const Op = db.Profile.Op;
 
 module.exports = function (app) {
+    // Index page
+    app.get("/", function (req, res) {
+        res.render("index", { test: "test" })
+    })
+
+    app.put("/api/user/", function (req, res) {
+        db.users.findAll({
+            where: req.body
+        }).then(function (data) {
+            res.json(data)
+        }).catch(function (err) {
+            res.json(err)
+        })
+    })
+
+    app.post("/api/user/", function (req, res) {
+        db.users.create(req.body).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err)
+        })
+    })
+
     app.post("/api/new/profile", function (req, res) {
         // Server side javascript to create new employee profile
         db.Profile.create({
@@ -15,7 +38,7 @@ module.exports = function (app) {
 
         }).then(function (result) {
             res.json(result);
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
         })
     })
@@ -55,12 +78,14 @@ module.exports = function (app) {
         db.Job.create({
             title: req.body.title,
             description: req.body.desc,
-            qualifications: req.body.qualification
+            qualifications: req.body.qualification,
+            city: req.body.city,
+            state: req.body.state
 
         }).then(function (result) {
             console.log(result);
             res.json(result);
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
         })
     });
@@ -69,44 +94,47 @@ module.exports = function (app) {
     app.get("/api/all/employer", function (req, res) {
         db.Job.findAll({
 
-        }).then(function(results){
+        }).then(function (results) {
+            console.log(results);
             res.json(results);
-        });
+        }).catch(function(err){
+            console.log(err);
+        })
     });
 
     // Update query
-    app.put("/api/employer/:id", function(req, res){
-            var id = req.params.id;
-            db.Job.update({
+    app.put("/api/employer/:id", function (req, res) {
+        var id = req.params.id;
+        db.Job.update({
             accepted: req.body.accepted,
             ProfileId: id
-          }, {
+        }, {
             where: {
-              id: req.body.employerId
+                id: req.body.employerId
             }
-          }).then(function(result){
-              console.log("Updated accepted status to Job table");
-              res.json(result);
-          })
+        }).then(function (result) {
+            console.log("Updated accepted status to Job table");
+            res.json(result);
+        })
     })
 
     // POST value to status table for employer
-    app.post("/api/employer/status", function(req, res){
-        
-            db.Status.create({
-                jobId: req.body.jobId,
-                profileId: req.body.userId,
-                accepted: req.body.accepted
-    
-            }).then(function (result) {
-                // console.log(result);
-                res.json(result);
-            })
-        })
+    app.post("/api/employer/status", function (req, res) {
 
-           // POST value to status table for employee
-    app.post("/api/employee/status", function(req, res){
-        
+        db.Status.create({
+            jobId: req.body.jobId,
+            profileId: req.body.userId,
+            accepted: req.body.accepted
+
+        }).then(function (result) {
+            // console.log(result);
+            res.json(result);
+        })
+    })
+
+    // POST value to status table for employee
+    app.post("/api/employee/status", function (req, res) {
+
         db.Status.create({
             jobId: req.body.jobId,
             profileId: req.body.userId,
@@ -116,7 +144,7 @@ module.exports = function (app) {
         }).then(function (result) {
             console.log(result);
             res.json(result);
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
         })
     })
@@ -130,48 +158,51 @@ module.exports = function (app) {
                 where: {
                     profileId: req.params.employeeId,
                     applied: 1
-                  }}],
-            
-          }).then(function(result) {
+                }
+            }],
+
+        }).then(function (result) {
             res.json(result);
-          }).catch(function(err){
-              console.log(err);
-          })
+        }).catch(function (err) {
+            console.log(err);
+        })
     });
 
-        // All jobs saved by a particular employee
-        app.get("/api/all/saved/:employeeId", function (req, res) {
-            db.Job.findAll({
-                include: [{
-                    model: db.Status,
-                    attributes: ['profileId', 'saved'],
-                    where: {
-                        profileId: req.params.employeeId,
-                        saved: 1
-                      }}],
-                
-              }).then(function(result) {
-                res.json(result);
-              }).catch(function(err){
-                  console.log(err);
-              })
-        });
-        
-                // All accepted candidates
-                app.get("/api/all/accepted/:employerId", function (req, res) {
-                    db.Profile.findAll({
-                        include: [{
-                            model: db.Status,
-                            attributes: ['jobId', 'accepted'],
-                            where: {
-                                jobId: req.params.employerId,
-                                accepted: 1
-                              }}],
-                        
-                      }).then(function(result) {
-                        res.json(result);
-                      }).catch(function(err){
-                          console.log(err);
-                      })
-                });
+    // All jobs saved by a particular employee
+    app.get("/api/all/saved/:employeeId", function (req, res) {
+        db.Job.findAll({
+            include: [{
+                model: db.Status,
+                attributes: ['profileId', 'saved'],
+                where: {
+                    profileId: req.params.employeeId,
+                    saved: 1
+                }
+            }],
+
+        }).then(function (result) {
+            res.json(result);
+        }).catch(function (err) {
+            console.log(err);
+        })
+    });
+
+    // All accepted candidates
+    app.get("/api/all/accepted/:employerId", function (req, res) {
+        db.Profile.findAll({
+            include: [{
+                model: db.Status,
+                attributes: ['jobId', 'accepted'],
+                where: {
+                    jobId: req.params.employerId,
+                    accepted: 1
+                }
+            }],
+
+        }).then(function (result) {
+            res.json(result);
+        }).catch(function (err) {
+            console.log(err);
+        })
+    });
 }
