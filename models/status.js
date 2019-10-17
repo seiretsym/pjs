@@ -1,39 +1,22 @@
 module.exports = function(sequelize, DataTypes) {
     var Status = sequelize.define("Status", {
         
+        jobId: {
+            type: DataTypes.BOOLEAN
+        },
+        userId: {
+            type: DataTypes.BOOLEAN
+        },
+        accepted: {
+            type: DataTypes.BOOLEAN
+        },
         applied: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
+            type: DataTypes.BOOLEAN
         },
         saved: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
-        doNotWant: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
-        declined: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
+            type: DataTypes.BOOLEAN
         }
     });
-    
-    Status.associate = function(models) {
-        models.Status.belongsTo(models.Job, {
-           foreignKey: {
-               allowNull: false
-           } 
-        });
-    };
-
-    Status.associate = function(models) {
-        models.Status.belongsTo(models.Profile, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
     
     return Status;
 };

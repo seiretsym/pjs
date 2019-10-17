@@ -38,8 +38,17 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             
         },
+        applied: {
+            type: DataTypes.BOOLEAN
+        },
+        saved: {
+            type: DataTypes.BOOLEAN
+        },
+        doNotWant: {
+            type: DataTypes.BOOLEAN
+        },
         accountType: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
             
         }
     })
@@ -50,11 +59,11 @@ module.exports = function(sequelize, DataTypes){
         });
       };
 
-      Profile.associate = function(models) {
-          models.Profile.hasOne(models.Status, {
-              onDelete: "CASCADE"
-          });
-      };
+    //   Profile.associate = function(models) {
+    //       models.Profile.hasOne(models.Status, {
+    //           onDelete: "CASCADE"
+    //       });
+    //   };
 
     return Profile;
 }

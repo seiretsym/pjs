@@ -48,16 +48,62 @@ module.exports = function (app) {
 
     // Post a new employer
     app.post("/api/new/employer", function (req, res) {
-        console.log("User Data: ");
-        console.log(req.body);
+        console.log("Employer Data: ");
+        // console.log(req.body);
         db.Job.create({
             title: req.body.title,
-            desc: req.body.desc,
+            description: req.body.desc,
             qualifications: req.body.qualification
-        }).then(function (results) {
+
+        }).then(function (result) {
+            console.log(result);
+            res.json(result);
+        }).catch(function(err) {
+            console.log(err);
+        })
+    });
+
+    // Get all job postings
+    app.get("/api/all/employer", function (req, res) {
+        db.Job.findAll({
+
+        }).then(function(results){
             res.json(results);
         });
     });
+
+    // Update query
+    app.put("/api/employer/:id", function(req, res){
+            var id = req.params.id;
+            db.Job.update({
+            accepted: req.body.accepted,
+            ProfileId: id
+          }, {
+            where: {
+              id: req.body.employerId
+            }
+          }).then(function(result){
+              console.log("Updated accepted status to Job table");
+              res.json(result);
+          })
+    })
+
+    // POST value to status table
+    app.post("/api/status", function(req, res){
+        
+            db.Status.create({
+                jobId: req.body.jobId,
+                userId: req.body.userId,
+                accepted: req.body.value
+    
+            }).then(function (result) {
+                console.log(result);
+                res.json(result);
+            }).catch(function(err) {
+                console.log(err);
+            })
+        })
+
 
     // Update query
     // app.get("/api/profile/update/:newcity", function(req, res){
