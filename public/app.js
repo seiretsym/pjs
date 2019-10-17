@@ -219,6 +219,6 @@ $(document).ready(function () {
 
     // Below function is triggered on click of apply button by candidate
     $(document).on("click", function(event){
-        event.preventDefault();
+        event.preventDefault();  
     })
 })
