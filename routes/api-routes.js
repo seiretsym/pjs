@@ -138,4 +138,22 @@ module.exports = function (app) {
               console.log(err);
           })
     });
+
+        // All jobs saved by a particular employee
+        app.get("/api/all/saved/:employeeId", function (req, res) {
+            db.Job.findAll({
+                include: [{
+                    model: db.Status,
+                    attributes: ['userId', 'saved'],
+                    where: {
+                        userId: req.params.employeeId,
+                        saved: 1
+                      }}],
+                
+              }).then(function(result) {
+                res.json(result);
+              }).catch(function(err){
+                  console.log(err);
+              })
+        });
 }

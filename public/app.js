@@ -289,11 +289,29 @@ $(document).ready(function () {
                 list.append("<hr>");
                 $("#applied-jobs").append(list);
             }
-
-
         })
-
     })
 
-
+        // View all jobs that particular candidate had saved
+        $(document).on("click", "#view-btn-saved", function (event) {
+            event.preventDefault();
+    
+            console.log("Inside view all saved jobs");
+            $.ajax("/api/all/saved/" + employeeId, {
+                type: "GET"
+            }).then(function (data) {
+                console.log("All jobs that are saved");
+                console.log(data);
+    
+                // Iterating through data to create a table
+                for (i = 0; i < data.length; i++) {
+                    var list = $("<ul>");
+                    list.append("<li>" + data[i].title + "</li>");
+                    list.append("<li>" + data[i].description + "</li>");
+                    list.append("<li>" + data[i].qualifications + "</li>");
+                    list.append("<hr>");
+                    $("#saved-jobs").append(list);
+                }
+            })
+        })
 })
