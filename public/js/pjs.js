@@ -1,5 +1,7 @@
 $(function () {
     var signedin = false;
+    var employerId;
+    var employeeId;
 
     $("#landing").modal({
         show: true,
@@ -142,7 +144,7 @@ $(function () {
         pwInput.prop("required", true);
 
         // create a password confirmation text input
-        var pwConfirm = $("<input>").addClass("form-control form-control-lg mt-3");
+        var pwConfirm = $("<input>").addClass("form-control form-control-lg mt-3 mb-2");
         pwConfirm.attr("type", "password");
         pwConfirm.attr("id", "pwConfirm");
         pwConfirm.attr("placeholder", "Confirm your password");
@@ -155,7 +157,7 @@ $(function () {
         employeeButton.attr("type", "radio");
         employeeButton.attr("id", "p-type");
         employeeButton.attr("name", "p-type");
-        employeeButton.attr("value", "Employee");
+        employeeButton.attr("value", "1");
         employeeButton.prop("checked", true)
 
         var secondLabel = $("<label>").addClass("m-0");
@@ -165,7 +167,7 @@ $(function () {
         employerButton.attr("type", "radio");
         employerButton.attr("id", "p-type");
         employerButton.attr("name", "p-type");
-        employerButton.attr("value", "Employer");
+        employerButton.attr("value", "2");
 
         var thirdLabel = $("<label>").addClass("m-0");
         thirdLabel.append("Employer")
