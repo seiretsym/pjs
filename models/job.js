@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-    var Job = sequelize.define("jobs", {
+    var Job = sequelize.define("Job", {
         // using uuid because it's more unique than counting up from 1
-        uuid: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
-            primaryKey: true
-        },
+        // uuid: {
+        //     type: DataTypes.UUID,
+        //     defaultValue: DataTypes.UUIDV1,
+        //     primaryKey: true
+        // },
         // job title
         title: {
             type: DataTypes.STRING,
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         // job description
-        desc: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -37,6 +37,12 @@ module.exports = function(sequelize, DataTypes) {
                 len: [2, 2]
             }
         },
+        accepted: {
+            type: DataTypes.BOOLEAN
+        },
+        declined: {
+            type: DataTypes.BOOLEAN
+        },
  
         qualifications: {
             type: DataTypes.STRING,
@@ -47,6 +53,19 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     });
+    
+    Job.associate = function (models) {
+        models.Job.belongsTo(models.Profile, {
+          
+          
+        });
+      };
+
+      Job.associate = function(models) {
+          models.Job.hasMany(models.Status, {
+              onDelete: "CASCADE"
+          });
+      };
     
     return Job;
 }

@@ -1,26 +1,49 @@
 {
     "development": {
-        "username": "username",
-        "password": "username",
-        "database": "pinnedjobs",
-        "host": "107.180.108.9",
-        "dialect": "mysql",
-        "operatorsAliases": false
+      "username": "root",
+      "password": "Indeed@123",
+      "database": "JOB_DB",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "dialect": "mysql",
+      "operatorsAliases": false
     },
     "test": {
-        "username": "username",
-        "password": "username",
-        "database": "pinnedjobs",
-        "host": "107.180.108.9",
-        "dialect": "mysql",
-        "operatorsAliases": false
+      "username": "root",
+      "password": "Indeed@123",
+      "database": "database_test",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "dialect": "mysql",
+      "operatorsAliases": false
     },
     "production": {
-        "username": "username",
-        "password": "username",
-        "database": "pinnedjobs",
-        "host": "107.180.108.9",
-        "dialect": "mysql",
-        "operatorsAliases": false
+      "use_env_variable": "JAWSDB_URL",
+      "dialect": "mysql",
+      "operatorsAliases": false
     }
+  }
+//        "username": "username",
+//        "password": "username",
+//        "database": "pinnedjobs",
+//        "host": "107.180.108.9",
+//        "dialect": "mysql",
+//        "operatorsAliases": false
+//    },
+//    "test": {
+//        "username": "username",
+//        "password": "username",
+//        "database": "pinnedjobs",
+//        "host": "107.180.108.9",
+//        "dialect": "mysql",
+//        "operatorsAliases": false
+//    },
+//    "production": {
+//        "username": "username",
+//        "password": "username",
+//        "database": "pinnedjobs",
+//        "host": "107.180.108.9",
+//        "dialect": "mysql",
+//        "operatorsAliases": false
+//    }
 }
