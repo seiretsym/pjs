@@ -301,9 +301,10 @@ $(document).ready(function () {
                 // Iterating through data to create a table
                 for (i = 0; i < data.length; i++) {
                     var list = $("<ul>");
-                    list.append("<li>" + data[i].title + "</li>");
-                    list.append("<li>" + data[i].description + "</li>");
-                    list.append("<li>" + data[i].qualifications + "</li>");
+                    list.append("<li>" + data[i].firstname + data[i].lastname + "</li>");
+                    list.append("<li>" + data[i].jobPreference + "</li>");
+                    list.append("<li>" + data[i].skills + "</li>");
+                    list.append("<li>" + data[i].linkedin + "</li>");
                     list.append("<hr>");
                     $("#accepted-candidates").append(list);
                 }
