@@ -271,15 +271,15 @@ $(document).ready(function () {
         }).then(function (data) {
             console.log("All jobs that are applied");
             console.log(data);
-
+            $("#j-applied").modal("toggle");
             // Iterating through data to create a table
             for (i = 0; i < data.length; i++) {
-                var list = $("<ul>");
-                list.append("<li>" + data[i].title + "</li>");
-                list.append("<li>" + data[i].description + "</li>");
-                list.append("<li>" + data[i].qualifications + "</li>");
-                list.append("<hr>");
-                $("#applied-jobs").append(list);
+                // var list = $("<ul>");
+                $("#listApplied").append("<li>" + data[i].title + "</li>");
+                $("#listApplied").append("<li>" + data[i].description + "</li>");
+                $("#listApplied").append("<li>" + data[i].qualifications + "</li>");
+                $("#listApplied").append("<hr>");
+                // $("#applied-jobs").append(list);
             }
         })
     })
@@ -294,15 +294,16 @@ $(document).ready(function () {
             }).then(function (data) {
                 console.log("All jobs that are saved");
                 console.log(data);
+                $("#j-saved").modal("toggle");
     
                 // Iterating through data to create a table
                 for (i = 0; i < data.length; i++) {
-                    var list = $("<ul>");
-                    list.append("<li>" + data[i].title + "</li>");
-                    list.append("<li>" + data[i].description + "</li>");
-                    list.append("<li>" + data[i].qualifications + "</li>");
-                    list.append("<hr>");
-                    $("#saved-jobs").append(list);
+                    // var list = $("<ul>");
+                    $("#listSaved").append("<li>" + data[i].title + "</li>");
+                    $("#listSaved").append("<li>" + data[i].description + "</li>");
+                    $("#listSaved").append("<li>" + data[i].qualifications + "</li>");
+                    $("#listSaved").append("<hr>");
+                    // $("#saved-jobs").append(list);
                 }
             })
         })
@@ -317,16 +318,17 @@ $(document).ready(function () {
             }).then(function (data) {
                 console.log("All accepted candidates");
                 console.log(data);
+                $("#j-accepted").modal("toggle");
     
                 // Iterating through data to create a table
                 for (i = 0; i < data.length; i++) {
-                    var list = $("<ul>");
-                    list.append("<li>" + data[i].firstname + data[i].lastname + "</li>");
-                    list.append("<li>" + data[i].jobPreference + "</li>");
-                    list.append("<li>" + data[i].skills + "</li>");
-                    list.append("<li>" + data[i].linkedin + "</li>");
-                    list.append("<hr>");
-                    $("#accepted-candidates").append(list);
+                    // var list = $("<ul>");
+                    $("#listAccepted").append("<li>" + data[i].firstname + data[i].lastname + "</li>");
+                    $("#listAccepted").append("<li>" + data[i].jobPreference + "</li>");
+                    $("#listAccepted").append("<li>" + data[i].skills + "</li>");
+                    $("#listAccepted").append("<li>" + data[i].linkedin + "</li>");
+                    $("#listAccepted").append("<hr>");
+                    // $("#accepted-candidates").append(list);
                 }
             })
         })

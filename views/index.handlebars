@@ -15,11 +15,19 @@
             <a id="profile" class="dropdown-item" href="#">Profile</a>
             <hr class="m-1 p-0">
             <div id="appliedwrap">
-            <a id="applied" class="dropdown-item" href="#">Applied Jobs</a>
+            <a id="view-btn-applied" class="dropdown-item" href="#">Applied Jobs</a>
+            <hr class="m-1 p-0">
+            </div>
+            <div id="savedwrap">
+            <a id="view-btn-saved" class="dropdown-item" href="#">Saved Jobs</a>
             <hr class="m-1 p-0">
             </div>
             <div id="postwrap">
             <a id="post" class="dropdown-item" href="#">Post Jobs</a>
+            <hr class="m-1 p-0">
+            </div>
+            <div id="acceptedwrap">
+            <a id="view-btn-accepted" class="dropdown-item" href="#">Accepted Profile</a>
             <hr class="m-1 p-0">
             </div>
             <a id="gtfo" class="dropdown-item" href="#">Sign Out</a>
@@ -137,7 +145,53 @@
             </div>
             <div id="j-list" class="modal-body">
                 <div class="card overflow-auto" style="height: 250px">
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush"id="listApplied">
+                        {{!-- {{ #each jobposts }}
+                        <li class="list-group-item">{{title}} - {{city}}, {{state}}</li>
+                        {{ /each }} --}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Saved Modal -->
+<div class="modal fade" id="j-saved" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Saved Applications</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="j-list" class="modal-body">
+                <div class="card overflow-auto" style="height: 250px">
+                    <ul class="list-group list-group-flush"id="listSaved">
+                        {{!-- {{ #each jobposts }}
+                        <li class="list-group-item">{{title}} - {{city}}, {{state}}</li>
+                        {{ /each }} --}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Accepted Modal -->
+<div class="modal fade" id="j-accepted" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Accepted Profiles</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="j-list" class="modal-body">
+                <div class="card overflow-auto" style="height: 250px">
+                    <ul class="list-group list-group-flush"id="listAccepted">
                         {{!-- {{ #each jobposts }}
                         <li class="list-group-item">{{title}} - {{city}}, {{state}}</li>
                         {{ /each }} --}}
