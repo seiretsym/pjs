@@ -7,6 +7,10 @@ module.exports = function(sequelize, DataTypes) {
         //     primaryKey: true
         // },
         // job title
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -54,18 +58,16 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     
-    Job.associate = function (models) {
-        models.Job.belongsTo(models.Profile, {
+    // Job.associate = function (models) {
+    //     models.Job.belongsTo(models.Profile, {
           
           
-        });
-      };
+    //     });
+    //   };
 
-      Job.associate = function(models) {
-          models.Job.hasMany(models.Status, {
-              onDelete: "CASCADE"
-          });
-      };
+    Job.associate = function(models) {
+        models.Job.hasMany(models.Status, { foreignkey: "jobId", sourceKey: "id" });
+    };
     
     return Job;
 }

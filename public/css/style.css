@@ -9,6 +9,13 @@ body {
 textarea {
     resize: none;
 }
+
+nav {
+    background: rgba(200, 200, 200, 0.9) !important;
+    border-bottom: solid black 1px;
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5)) 
+}
+
 h8 {
     color: grey;
     font-family: 'Gotham';
@@ -27,4 +34,6 @@ h8 {
     margin-left: -512px; }
 }
 
-
+.menu {
+    z-index: 1;
+}
