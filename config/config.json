@@ -18,7 +18,11 @@
       "operatorsAliases": false
     },
     "production": {
-      "use_env_variable": "JAWSDB_URL",
+      "username": "username",
+      "password": "username",
+      "database": "pinnedjobs",
+      "host": "kerwinhy.com",
+      "port": 3306,
       "dialect": "mysql",
       "operatorsAliases": false
     }
