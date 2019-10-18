@@ -6,7 +6,6 @@ module.exports = function (app) {
     })
 
     app.put("/api/user/", function (req, res) {
-        console.log(req)
         db.users.findAll({
             where: req.body
         }).then(function(data) {
