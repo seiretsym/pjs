@@ -16,7 +16,7 @@ Employers have the ability to post career opportunities making it easier to find
 - As an employer you can post jobs and view profiles of users who match your postins needs. 
 
 ## Code Snippet
-````Javascript
+```Javascript
 // hashing password /encrypting
      app.put("/api/user/", function (req, res) {
         var pw = req.body.password;
@@ -43,7 +43,9 @@ Employers have the ability to post career opportunities making it easier to find
             console.log(err)
         })
     })
-````Javascript
+```
+
+```Javascript
 // Get employee profile based on city name
     app.get("/api/new/profile/:cityName", function (req, res) {
         var cityName = req.params.cityName;
@@ -57,7 +59,9 @@ Employers have the ability to post career opportunities making it easier to find
             res.json(result);
         });
     })
-````Javascript
+```
+
+```Javascript
 // Associating jobs with many statuses
     Job.associate = function(models) {
         models.Job.hasMany(models.Status, { foreignkey: "jobId", sourceKey: "id" });
@@ -65,7 +69,9 @@ Employers have the ability to post career opportunities making it easier to find
     
     return Job;
 }
-````Javascript
+```
+
+```Javascript
 // Creating new employer with Ajax method POST
        $.ajax("/api/new/employer", {
             type: "POST",
