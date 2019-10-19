@@ -44,6 +44,7 @@ Employers have the ability to post career opportunities making it easier to find
         })
     })
 ```
+>Used BCrypt library to hash password
 
 ```Javascript
 // Get employee profile based on city name
@@ -60,6 +61,7 @@ Employers have the ability to post career opportunities making it easier to find
         });
     })
 ```
+> This is basically a search query to search a particular profile based on a city name
 
 ```Javascript
 // Associating jobs with many statuses
@@ -70,7 +72,7 @@ Employers have the ability to post career opportunities making it easier to find
     return Job;
 }
 ```
-
+> Job model has many relationships with Status table for application to keep track of all Applied/Saved jobs
 ```Javascript
 // Creating new employer with Ajax method POST
        $.ajax("/api/new/employer", {
@@ -86,7 +88,7 @@ Employers have the ability to post career opportunities making it easier to find
 
         })
 ```
-
+> Code snippet to create new employer when he/she is logged in
 ```Javascript
     // All accepted candidates
     app.get("/api/all/accepted/:employerId", function (req, res) {
@@ -108,6 +110,7 @@ Employers have the ability to post career opportunities making it easier to find
     });
 }
 ```
+> Used left join sequelize query to join Profile and status model so that each employer can keep track of all accepted profiles
 
 ## Technologies Used
 - Git - version control system to track changes to source code.
@@ -132,7 +135,7 @@ Employers have the ability to post career opportunities making it easier to find
 - Utilizing comments with our code to help during merging of back and front ends
 - Using a personal server to store our data instead of relying on a third party 
 ## Collaborators
-- Mahisha Gunasekara - [GitHub](https://github.com/Mahi-Mani) | [LinkedIn](https://www.linkedin.com/in/mahisha-gunasekaran-0a780a88/)
+- Mahisha Gunasekaran - [GitHub](https://github.com/Mahi-Mani) | [LinkedIn](https://www.linkedin.com/in/mahisha-gunasekaran-0a780a88/)
 - Lex Santos - [GitHub](https://github.com/flexsant) | [LinkedIn](https://www.linkedin.com/in/lex-santos-673623194/)
 - Ron Melendres - [GitHub](https://github.com/RonMelendres) | [LinkedIn](https://www.linkedin.com/in/ron-melendres-88a719191/)
 - Kerwin Hy - [GitHub](https://github.com/seiretsym) | [LinkedIn](https://www.linkedin.com/in/kerwinhy/)
