@@ -1,4 +1,4 @@
-# project2
+# Pinned Jobs
 [Site](https://pinnedjobs.herokuapp.com/)
 ## Summary
 Searching for a job can be daunting and often unorganized…
@@ -6,9 +6,9 @@ PinnedJobs allows our users to easily search for tech jobs within their area as 
 Employers have the ability to post career opportunities making it easier to find the perfect match and fill job vacancies. 
 
 ## Visual Aids
-[landingSite](public/image.png)
-[employeePinnedJobs](public/pjsEmployee.png)
-[employerPostJobs](public/pjsJobPosts.png)
+![landingSite](public/image.png)
+![employeePinnedJobs](public/pjsEmployee.png)
+![employerPostJobs](public/pjsJobPosts.png)
 
 ## User Guides
 - PinnedJobs allows the user to easily log-in as an employee or employer. 
@@ -102,5 +102,8 @@ Employers have the ability to post career opportunities making it easier to find
 - Introducing a new library BCrypt which was used for hashing and comparing passwords
 - Utilizing comments with our code to help during merging of back and front ends
 - Using a personal server to store our data instead of relying on a third party 
-## User Info
-[GitHub](https://github.com/seiretsym/pjs)
+## Collaborators
+- Mahisha Gunasekara - [GitHub](https://github.com/Mahi-Mani) | [LinkedIn](https://www.linkedin.com/in/mahisha-gunasekaran-0a780a88/)
+- Lex Santos - [GitHub](https://github.com/flexsant) | [LinkedIn](https://www.linkedin.com/in/lex-santos-673623194/)
+- Ron Melendres - [GitHub](https://github.com/RonMelendres) | [LinkedIn](https://www.linkedin.com/in/ron-melendres-88a719191/)
+- Kerwin Hy - [GitHub](https://github.com/seiretsym) | [LinkedIn](https://www.linkedin.com/in/kerwinhy/)
