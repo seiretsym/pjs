@@ -85,7 +85,30 @@ Employers have the ability to post career opportunities making it easier to find
             $("#j-post").modal("toggle");
 
         })
-````
+```
+
+```Javascript
+    // All accepted candidates
+    app.get("/api/all/accepted/:employerId", function (req, res) {
+        db.Profile.findAll({
+            include: [{
+                model: db.Status,
+                attributes: ['jobId', 'accepted'],
+                where: {
+                    jobId: req.params.employerId,
+                    accepted: 1
+                }
+            }],
+
+        }).then(function (result) {
+            res.json(result);
+        }).catch(function (err) {
+            console.log(err);
+        })
+    });
+}
+```
+
 ## Technologies Used
 - Git - version control system to track changes to source code.
 - GitHub - hosts repository that can be deployed to GitHub Pages.
